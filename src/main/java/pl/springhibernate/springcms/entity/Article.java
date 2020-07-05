@@ -20,8 +20,14 @@ public class Article {
 
     @OneToOne
     private Author author;
+    @JoinColumn(name = "author_id",
+            unique=true)
 
 
+    @OneToMany
+    private List<Category> categories = new ArrayList<>();
+
+    private String content;
     @Column(name = "created_on")
     private LocalDateTime createdOn;
     @Column(name = "updated_on")
@@ -38,6 +44,24 @@ public class Article {
     }
 
     public Article() {
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public Article setCategories(List<Category> categories) {
+        this.categories = categories;
+        return this;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public Article setContent(String content) {
+        this.content = content;
+        return this;
     }
 
     public Long getId() {
@@ -80,12 +104,15 @@ public class Article {
         this.updatedOn = updatedOn;
     }
 
+
     @Override
     public String toString() {
         return "Article{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", author=" + author +
+                ", categories=" + categories +
+                ", content='" + content + '\'' +
                 ", createdOn=" + createdOn +
                 ", updatedOn=" + updatedOn +
                 '}';
