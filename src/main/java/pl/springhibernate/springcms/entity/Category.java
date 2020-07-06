@@ -6,11 +6,11 @@ import javax.persistence.*;
 public class Category {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column (length = 100)
+    @Column(length = 100)
     private String name;
-    @Column (nullable = true)
+    @Column(nullable = true)
     private String description;
 
 

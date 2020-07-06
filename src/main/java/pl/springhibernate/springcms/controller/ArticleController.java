@@ -52,6 +52,16 @@ public class ArticleController {
         article.getCategories().add(category);
         articleDao.save(article);
 
+        Article article1 = new Article();
+        article1.setTitle("Looks not good");
+        article1.setAuthor(author1);
+        article1.setContent("Not Magic");
+        article1.setCreatedOn(new Article().getCreatedOn());
+        article1.getCategories().add(category1);
+        articleDao.save(article1);
+
         return "All was added";
     }
 }
+
+

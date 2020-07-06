@@ -1,11 +1,9 @@
 package pl.springhibernate.springcms.entity;
 
-import org.hibernate.sql.Update;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -18,13 +16,13 @@ public class Article {
     @Column(length = 200)
     private String title;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private Author author;
     @JoinColumn(name = "author_id",
-            unique=true)
+            unique = true)
 
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Category> categories = new ArrayList<>();
 
     private String content;

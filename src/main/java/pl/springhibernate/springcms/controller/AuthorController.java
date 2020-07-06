@@ -30,7 +30,7 @@ public class AuthorController {
     //    - edycja encji
     @RequestMapping("/author/update/{id}/{firstName}/{lastName}")
     @ResponseBody
-    public String updateAuthor(@PathVariable long id, @PathVariable String firstName, @PathVariable String lastName) {
+    public String update(@PathVariable long id, @PathVariable String firstName, @PathVariable String lastName) {
         Author author = authorDao.findById(id);
         author.setFirstName(firstName);
         author.setLastName(lastName);
@@ -41,7 +41,7 @@ public class AuthorController {
     //- pobieranie
     @RequestMapping("/author/get/{id}")
     @ResponseBody
-    public String getAuthor(@PathVariable long id) {
+    public String get(@PathVariable long id) {
         Author author = authorDao.findById(id);
         return author.toString();
     }
@@ -49,7 +49,7 @@ public class AuthorController {
     //- usuwanie
     @RequestMapping("/author/delete/{id}")
     @ResponseBody
-    public String deleteAuthor(@PathVariable long id) {
+    public String delete(@PathVariable long id) {
         Author author = authorDao.findById(id);
         authorDao.delete(author);
         return "deleted";
